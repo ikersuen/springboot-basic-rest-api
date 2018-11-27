@@ -40,8 +40,7 @@ public class EmployeeResource {
 
     @PostMapping(produces = "application/json")
     public int addEmployee(@RequestBody Employee employee){
-        int id = employeeService.add(employee);
-        return id;
+        return employeeService.add(employee);
     }
 
     @PutMapping("/{id}")
