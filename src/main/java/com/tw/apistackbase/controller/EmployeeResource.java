@@ -25,6 +25,12 @@ public class EmployeeResource {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/{id}")
+    public Employee getEmployeeById(@PathVariable int id) {
+
+        return employeeService.findById(id);
+    }
+
     @PostMapping(produces = "application/json")
     public int addEmployee(@RequestBody Employee employee){
         int id = employeeService.add(employee);
