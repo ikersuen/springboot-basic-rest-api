@@ -34,13 +34,5 @@ public class CompanyService {
         }
         return null;
     }
-
-    public void deleteById(int id){
-        for(Company company : this.companies){
-            if(company.getId() == (id)){
-                this.companies.remove(company);
-            }
-        }
-    }
 }
 

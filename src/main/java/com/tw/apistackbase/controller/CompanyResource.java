@@ -26,13 +26,17 @@ public class CompanyResource {
     }
 
     @GetMapping("/{id}")
-    public Company getEmployeeById(@PathVariable int id) {
-
+    public Company getCompanyById(@PathVariable int id) {
         return companyService.findById(id);
     }
 
+    @GetMapping("/{id}/employees")
+    public ResponseEntity<List<Employee>> getCompanyEmployees(@PathVariable int id) {
+        return ResponseEntity.ok(companyService.findById(id).getEmployees());
+    }
+
     @PostMapping(produces = "application/json")
-    public int addEmployee(@RequestBody Company company){
+    public int addCompany(@RequestBody Company company){
         return companyService.add(company);
     }
 }
