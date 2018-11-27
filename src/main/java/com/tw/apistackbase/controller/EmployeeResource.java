@@ -20,13 +20,16 @@ public class EmployeeResource {
     }
 
     @GetMapping(produces = {"application/json"})
-    public ResponseEntity<List<Employee>> getEmployee(@RequestParam(value = "gender", required = false) String gender) {
+    public ResponseEntity<List<Employee>> getEmployee(@RequestParam(value = "gender", required = false) String gender,
+                                                      @RequestParam(value = "page", required = false) int page,
+                                                      @RequestParam(value = "pageSize", required = false) int pageSize
+                                                      ) {
         if(gender != null){
             return ResponseEntity.ok(employeeService.findByGender(gender));
-        }else{
-            List<Employee> employees = employeeService.getAll();
-            return ResponseEntity.ok(employees);
         }
+
+        List<Employee> employees = employeeService.getAll();
+        return ResponseEntity.ok(employees);
     }
 
     @GetMapping("/{id}")
