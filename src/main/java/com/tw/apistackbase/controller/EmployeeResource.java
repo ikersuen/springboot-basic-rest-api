@@ -20,9 +20,13 @@ public class EmployeeResource {
     }
 
     @GetMapping(produces = {"application/json"})
-    public ResponseEntity<List<Employee>> getEmployee() {
-        List<Employee> employees = employeeService.getAll();
-        return ResponseEntity.ok(employees);
+    public ResponseEntity<List<Employee>> getEmployee(@RequestParam(value = "gender", required = false) String gender) {
+        if(gender != null){
+            return ResponseEntity.ok(employeeService.findByGender(gender));
+        }else{
+            List<Employee> employees = employeeService.getAll();
+            return ResponseEntity.ok(employees);
+        }
     }
 
     @GetMapping("/{id}")

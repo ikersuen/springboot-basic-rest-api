@@ -42,5 +42,15 @@ public class EmployeeService {
             }
         }
     }
+
+    public List<Employee> findByGender(String gender){
+        List<Employee> employeesByGender = new ArrayList<>();
+        for(Employee employee : this.employees){
+            if(employee.getGender().equals(gender)){
+                employeesByGender.add(employee);
+            }
+        }
+        return employeesByGender;
+    }
 }
 
