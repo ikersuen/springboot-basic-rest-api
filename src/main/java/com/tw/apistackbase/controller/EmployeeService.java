@@ -10,7 +10,7 @@ import java.util.List;
 public class EmployeeService {
 
     private List<Employee> employees;
-    private int idIndex = 0;
+    private int idIndex = 1;
 
     public EmployeeService(){
         this.employees = new ArrayList<>();
@@ -23,7 +23,7 @@ public class EmployeeService {
     public int add(Employee employee){
         employee.setId(idIndex++);
         this.employees.add(employee);
-        return idIndex;
+        return employee.getId();
     }
 
     public Employee findById(int id){
@@ -33,6 +33,14 @@ public class EmployeeService {
             }
         }
         return null;
+    }
+
+    public void deleteById(int id){
+        for(Employee employee : this.employees){
+            if(employee.getId() == (id)){
+                this.employees.remove(employee);
+            }
+        }
     }
 }
 

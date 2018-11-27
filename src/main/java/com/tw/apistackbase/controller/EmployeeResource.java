@@ -43,4 +43,9 @@ public class EmployeeResource {
             return "update failed";
         }
     }
+
+    @DeleteMapping("/{id}")
+    void deleteEmployee(@PathVariable int id) {
+        employeeService.deleteById(id);
+    }
 }
